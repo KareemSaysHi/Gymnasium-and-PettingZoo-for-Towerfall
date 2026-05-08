@@ -1,4 +1,4 @@
-from petting_zoo_env_shooting import TowerFallEnv
+from towerfall_env import TowerFallEnv
 from agents import PPOComparisonAgent
 
 # evaluate a model against SimpleAgent

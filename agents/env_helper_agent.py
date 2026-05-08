@@ -7,16 +7,11 @@ from towerfall import Connection
 
 import env_methods as env_methods
 
-class PPOAgentShooting_V0():
+class EnvHelperAgent():
   '''
   A minimal agent that works with the PettingZoo Env.
-
-  params connection: A connection to a Towerfall game.
-  params attack_archers: If True, the agent will attack other neutral archers.
-
-  mode can either be training or evaluating
   '''
-  def __init__(self, connection: Connection, mode = "training", model = None, normalizer = None, frames_per_action = 5):
+  def __init__(self, connection: Connection):
     
     #Necessary TowerFall parameters
     self.state_init = {}
@@ -26,18 +21,6 @@ class PPOAgentShooting_V0():
     self.connection = connection
     self.attack_archers = True
     self.id = 0
-
-    #mode and model information
-    self.mode = mode
-    self.model = model
-    
-    self.normalizer = normalizer
-
-    if self.mode == "evaluating":
-      self.normalizer.training = False
-      self.normalizer.norm_reward = False
-
-    self.frames_per_action = frames_per_action
     
     #game state variables
     self.position = None
@@ -50,8 +33,6 @@ class PPOAgentShooting_V0():
     self.dead = None
 
     #variables necessary for action masking
-    self.dodge_cooldown = 0
-    self.can_dodge = True
     self.can_jump = True
     self.held_jump_on_last_frame = False
     self.on_ground = True
@@ -64,7 +45,6 @@ class PPOAgentShooting_V0():
     self.but_to_input = ['', 'j', 'z', 's']
 
   def reset_vars(self):
-    self.can_dodge = True
     self.can_jump = True
     self.held_jump_on_last_frame = False
     self.on_ground = True
@@ -98,40 +78,10 @@ class PPOAgentShooting_V0():
 
     if game_state['type'] == 'update':
       # 'update' informs the state of entities in the map (players, arrows, enemies, etc).
+      # Here, all we'll do is get the game state.  
+      # The frame will not continue until a response is given from both agents
       self.update_data(game_state)
 
-      if self.mode == "training":
-        return #if we are training, no action should be done from a model.
-      
-      #if we are not training, then have our model decide what to do:
-      #   take all observations and make it into the proper size:
-      #   then put it into the model, output a tensor, that's our new action vector
-
-      if self.id % self.frames_per_action == 0:
-        
-        observations = env_methods.build_obs(self) #is this all I need?  Or do I need the other player as well...
-        normalized_obs = self.normalizer.normalize_obs(observations)
-        action, _ = self.model.predict(normalized_obs, deterministic=True)
-        print(action)
-        self.direction = action[0]
-        self.button = action[1]
-
-        #obs_tensor = torch.as_tensor(observations).unsqueeze(0).float().to(self.model.policy.device)
-        #distribution = self.model.policy.get_distribution(obs_tensor)
-        #for i, dist in enumerate(distribution.distribution):
-        #    print(f"dim {i} probs: {dist.probs.detach().cpu().numpy()}")
-
-      return self.direction, self.button
-
-      if self.direction > 0:
-        self.press(self.dir_to_input[self.direction])
-      if self.button > 0:
-        self.press(self.but_to_input[self.button])
-
-      if self.id % self.frames_per_action == self.frames_per_action-1:
-        self.remove('s')
-
-      self.send_actions()
 
   def update_data(self, game_state: Mapping[str, Any]):
     
@@ -149,8 +99,6 @@ class PPOAgentShooting_V0():
         self.my_movement = self.position + self.velocity
         self.my_arrows = len(e.get('arrows', []))
         self.my_facing = (e['facing'] + 1) // 2
-        #self.dodge_cooldown = e['dodgeCooldown']
-        #self.can_dodge = (self.dodge_cooldown == 0)
         self.on_ground = e['onGround']
         self.on_wall = e['onWall']
         self.dead = False
@@ -162,7 +110,6 @@ class PPOAgentShooting_V0():
         self.your_arrows = len(e.get('arrows', []))        
     return
 
-  
   #press a button
   def press(self, b):
     self.pressed.add(b)

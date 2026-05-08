@@ -1,12 +1,20 @@
-from petting_zoo_env_shooting import TowerFallEnv
-from agents import PPOComparisonAgent
+from towerfall_env import TowerFallEnv
+from agents import PPOComparisonAgent, ModelAgent
+from stable_baselines3 import PPO
+import pickle
 
 # evaluation of one model against another
 
 num_rounds = 300
 agents = ["archer_0", "archer_1"]
+
+model = PPO.load("./training_data/towerfall_arrows_normalized_500k")
+
+with open("./training_data/vecnormalize_stats_500k.pkl", "rb") as f:
+    normalizer = pickle.load(f)
+
 current_agents = {
-    "archer_0": PPOComparisonAgent(), 
+    "archer_0": ModelAgent(model = model, normalizer = normalizer), 
     "archer_1": PPOComparisonAgent()
 }
 
@@ -15,7 +23,7 @@ first_player_losses = 0
 first_player_ties = 0
 
 #initialize environment
-env = TowerFallEnv(fps=1000)
+env = TowerFallEnv(fps=60)
 obs, _ = env.reset()
 
 

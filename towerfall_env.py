@@ -1,6 +1,6 @@
 from pettingzoo import ParallelEnv
 from towerfall import Towerfall
-from agents import PPOAgentShooting_V0
+from agents import EnvHelperAgent
 from gymnasium.spaces import Box, MultiDiscrete, Dict, Discrete
 import numpy as np
 
@@ -158,15 +158,9 @@ class TowerFallEnv(ParallelEnv):
             #initializing towerfall variables
             self.connections = {a: self.towerfall.join(timeout=10, verbose=1) for a in self.agents}
             
-            self.agent_objects = {a: PPOAgentShooting_V0(
-                connection = self.connections[a], 
-                mode = "training",
-                frames_per_action= self.frames_per_action)
-                for a in self.agents}
+            self.agent_objects = {a: EnvHelperAgent(self.connections[a]) for a in self.agents}
 
             self.has_connected = True
-
-
 
         #tricky issue: towerfall.send_reset cannot be called UNTIL both agents reply with some action in the current episode.     
 
