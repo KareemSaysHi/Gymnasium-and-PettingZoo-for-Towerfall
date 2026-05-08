@@ -224,7 +224,7 @@ class TowerFallEnv(ParallelEnv):
         terminations = self.get_terminations()
         truncations = self.get_truncations()
         
-        infos = {a: {} for a in self.agents}
+        infos = {a: {"dead": self.agent_objects[a].dead} for a in self.agents}
 
         return observations, rewards, terminations, truncations, infos
     
