@@ -1,8 +1,3 @@
-
-wins for 20k: 47, losses for 20k: 53
-wins for 20k: 55, losses for 20k: 46
-wins for 20k: 48, losses for 20k: 52
-wins for 20k: 45, losses for 20k: 55
 wins for 20k: 47, losses for 20k: 53
 wins for 40k: 59, losses for 40k: 40
 wins for 60k: 51, losses for 60k: 49

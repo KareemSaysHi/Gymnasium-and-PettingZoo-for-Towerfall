@@ -22,7 +22,7 @@ def evaluate(model, normalizer, num_rounds):
     first_player_ties = 0
 
     #initialize environment
-    env = TowerFallEnv(fps=10000)
+    env = TowerFallEnv(fps=1000)
     obs, _ = env.reset()
 
 
