@@ -38,3 +38,4 @@ wins for 740k: 14, losses for 740k: 87
 wins for 760k: 11, losses for 760k: 90
 wins for 780k: 10, losses for 780k: 91
 wins for 800k: 13, losses for 800k: 88
+wins for 20k: 47, losses for 20k: 54

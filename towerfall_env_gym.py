@@ -21,6 +21,9 @@ class TowerFallEnvGym(gym.Env):
         self.opponent_bot_obs = None
 
         
+    def action_masks(self):
+        return self.petting_zoo_env.action_masks()["archer_0"]
+
     def reset(self, seed=None, options=None):
         super().reset(seed=seed) #necessary for gymnasium
         obs, info = self.petting_zoo_env.reset()
@@ -35,5 +38,6 @@ class TowerFallEnvGym(gym.Env):
         }
 
         observations, rewards, terminations, truncations, infos = self.petting_zoo_env.step(petting_zoo_action)
+        self.opponent_bot_obs = observations['archer_1'] 
         return observations["archer_0"], rewards["archer_0"], terminations["archer_0"], truncations["archer_0"], infos["archer_0"]
     

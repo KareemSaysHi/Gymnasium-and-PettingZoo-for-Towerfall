@@ -173,8 +173,8 @@ class TowerFallEnv(ParallelEnv):
 
         #send data to reset
         self.towerfall.send_reset([
-            dict(type='archer', pos=dict(x=80 + random.randint(-40, 40), y=110)),
-            dict(type='archer', pos=dict(x=240 + random.randint(-40, 40), y=110)),
+            dict(type='archer', pos=dict(x=30, y=110)),
+            dict(type='archer', pos=dict(x=290, y=110)),
         ])
 
         for a in self.agents:

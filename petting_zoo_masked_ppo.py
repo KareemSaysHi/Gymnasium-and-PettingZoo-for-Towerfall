@@ -12,6 +12,7 @@ from supersuit.vector.concat_vec_env import ConcatVecEnv
 import pickle
 from evaluate import evaluate
 
+#some janky Claude workaround for making sure all the correct functions are in ConcatVecEnv
 def _has_attr(self, attr_name):
     return all(hasattr(v, attr_name) for v in self.vec_envs)
 
@@ -46,7 +47,7 @@ ConcatVecEnv.has_attr = _has_attr
 ConcatVecEnv.env_method = _env_method
 ConcatVecEnv.get_attr = _get_attr
 ConcatVecEnv.env_is_wrapped = _env_is_wrapped
-
+#end of janky Claude workaround
 
 # Helper wrapper that is necessary for MaskablePPO on a vectorized environment:
 class MarkovVectorEnvActionMasker(ss.vector.markov_vector_wrapper.MarkovVectorEnv):
