@@ -7,9 +7,10 @@ from sb3_contrib.ppo_mask import MaskablePPO
 import numpy as np
 from stable_baselines3.common.vec_env import VecNormalize
 import supersuit as ss
-from petting_zoo_env_shooting import TowerFallEnv 
+from towerfall_env import TowerFallEnv 
 from supersuit.vector.concat_vec_env import ConcatVecEnv
-
+import pickle
+from evaluation import evaluate
 
 def _has_attr(self, attr_name):
     return all(hasattr(v, attr_name) for v in self.vec_envs)
@@ -62,14 +63,26 @@ my_list = ["my_movement", "your_movement"]
 for i in range (6):
     my_list.append(f"arrow{i}_pos-vel")
 env = VecNormalize(env1, norm_obs_keys= my_list, norm_reward = False)
-
+evaluating_env = TowerFallEnv(fps = 10000)
 
 model = MaskablePPO("MultiInputPolicy", env, verbose=1)
-for i in range(30):
-    #train 100k steps
-    model.learn(total_timesteps=100000, reset_num_timesteps=False)
-    model.save(f"towerfall_masked_{100*(i+1)}k")
-    env.save(f"vn_masked_stats{100*(i+1)}k.pkl")
+for i in range(100):
+    #train 20k steps
+    model.learn(total_timesteps=20000, reset_num_timesteps=False)
+    model.save(f"./training_data/towerfall_masked_{i*20000}")
+    env.save(f"./training_data/vn_masked_stats_{i*20000}.pkl")
+    env.reset()
+
+    #evaluating
+    #with open("./training_data/vn_masked_stats.pkl", "rb") as f:
+    #    normalizer = pickle.load(f)
+    # 
+    #wins, losses, ties = evaluate(model, normalizer, evaluating_env, 100)
+    # 
+    #with open("data.txt", "a") as f:
+    #    f.write("\n" + f"wins for {20*(i+1)}k: {wins}, losses for {20*(i+1)}k: {losses}")
+    
+    #env.reset()
 
 
 

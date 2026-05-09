@@ -5,6 +5,7 @@ from stable_baselines3.ppo import MlpPolicy
 import torch
 from towerfall import Connection
 
+
 import env_methods as env_methods
 
 class ModelAgent():
