@@ -45,7 +45,7 @@ def build_obs(agent_obj):
         observations[f"arrow{i}_flying"] = 0
         observations[f"arrow{i}_grounded"] = 0
 
-    return np.array(observations)
+    return observations
 
 def build_action_masks(agent_obj):
  

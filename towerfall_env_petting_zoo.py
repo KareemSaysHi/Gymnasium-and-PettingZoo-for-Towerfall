@@ -3,7 +3,7 @@ from towerfall import Towerfall
 from agents import EnvHelperAgent
 from gymnasium.spaces import Box, MultiDiscrete, Dict, Discrete
 import numpy as np
-
+import random
 import env_methods as env_methods 
 
 ''' TowerFallEnv is a PettingZoo Environment for interacting with TowerFall '''
@@ -173,8 +173,8 @@ class TowerFallEnv(ParallelEnv):
 
         #send data to reset
         self.towerfall.send_reset([
-            dict(type='archer', pos=dict(x=80, y=110)),
-            dict(type='archer', pos=dict(x=240, y=110)),
+            dict(type='archer', pos=dict(x=80 + random.randint(-40, 40), y=110)),
+            dict(type='archer', pos=dict(x=240 + random.randint(-40, 40), y=110)),
         ])
 
         for a in self.agents:
