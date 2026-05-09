@@ -7,10 +7,10 @@ from sb3_contrib.ppo_mask import MaskablePPO
 import numpy as np
 from stable_baselines3.common.vec_env import VecNormalize
 import supersuit as ss
-from towerfall_env import TowerFallEnv 
+from towerfall_env_petting_zoo import TowerFallEnv 
 from supersuit.vector.concat_vec_env import ConcatVecEnv
 import pickle
-from evaluation import evaluate
+from evaluate import evaluate
 
 def _has_attr(self, attr_name):
     return all(hasattr(v, attr_name) for v in self.vec_envs)

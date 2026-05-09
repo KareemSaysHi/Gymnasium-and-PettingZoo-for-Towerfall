@@ -1,12 +1,9 @@
-from towerfall_env import TowerFallEnv
+from towerfall_env_petting_zoo import TowerFallEnv
 from agents import PPOComparisonAgent, ModelAgent
 from stable_baselines3 import PPO
 import pickle
 
 # evaluation of one model against another
-
-# with open("./training_data/vecnormalize_stats_500k.pkl", "rb") as f:
-#        normalizer = pickle.load(f)
 
 def evaluate(model, normalizer, num_rounds):
 
@@ -41,5 +38,3 @@ def evaluate(model, normalizer, num_rounds):
             num_rounds -= 1
 
     return [first_player_wins, first_player_losses, first_player_ties]
-
-#number of arrows caught
