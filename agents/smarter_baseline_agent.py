@@ -1,6 +1,10 @@
 import random
 import numpy as np
 
+'''
+SmarterBaselineAgent is a copy of BaselineAgent, except that it
+catches arrows that are close to it.
+ '''
 class SmarterBaselineAgent:
   def __init__(self):
     self.direction_pressed = ''
@@ -10,16 +14,7 @@ class SmarterBaselineAgent:
     self.but_to_input = ['', 'j', 'z', 's']
 
   #given an observation, make an action
-  #r = right, l = left, u = up, d = down, j = jump, z = dash, s = shoot
   def take_action(self, observation):
-    
-    # This bot acts based on the position of the other player only. It
-    # has a very random play style:
-    #  - Runs to the enemy when they are below.
-    #  - Runs away from the enemy when they are above.
-    #  - Shoots when in the same horizontal line.
-    #  - Dashes randomly.
-    #  - Jumps randomly.
 
     self.direction_pressed = ''
     self.button_pressed = ''
@@ -48,7 +43,6 @@ class SmarterBaselineAgent:
       self.direction_pressed = 'l' if random.randint(0, 3) > 0 else 'r'
 
 
-    # If in the same line shoots,
     if abs(my_pos['y'] - enemy_pos['y']) < 20:
       if random.randint(0, 5) == 0:
         self.button_pressed = 's'
@@ -61,7 +55,6 @@ class SmarterBaselineAgent:
       if np.dot((agent_pos - arrow_pos), arrow_vel) > 0 and np.linalg.norm((agent_pos - arrow_pos)) < 40: #if the arrow is actually coming toward us
         self.button_pressed = 'z'
 
-    # Presses jump in 1/20 of the frames.
     if random.randint(0, 10) == 0:
       self.button_pressed = 'j'
 

@@ -9,6 +9,13 @@ import numpy as np
 from gymnasium.utils import EzPickle # for some stupid bug
 
 
+
+''' 
+A PettingZoo environment for a Towerfall agent with no ability to shoot.
+Made as a testing ground for building and training the environment before \
+moving to the full generality of fighting with arrows
+'''
+
 class TowerFallNoArrows(ParallelEnv, EzPickle):
     metadata = {
         "name": "TowerFallNoArrows",

@@ -4,10 +4,20 @@ from typing import Any, Mapping
 
 from towerfall import Connection
 
+'''
+NOTE: DummyAgent was written before the large shift in framework of agents
+used when I extended to the Towerfall environment with arrows.  I've included
+this file for completeness but ignore it in terms of implementation for the
+arrow setting.
+'''
+
+'''
+DummyAgent's structure is heavily modeled off of the agent structure
+in Towerfall-AI.
+'''
+
 class DummyAgent:
   '''
-  A minimal agent that works with the PettingZoo Env.
-
   params connection: A connection to a Towerfall game.
   params attack_archers: If True, the agent will attack other neutral archers.
   '''

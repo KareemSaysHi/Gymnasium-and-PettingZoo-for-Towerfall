@@ -8,15 +8,12 @@ from towerfall import Connection
 
 import env_methods as env_methods
 
+'''
+An agent that acts based on a model's outputs.  A normalizer pickle
+file is required as well.
+'''
 class ModelAgent():
-  '''
-  A minimal agent that works with the PettingZoo Env.
-
-  params connection: A connection to a Towerfall game.
-  params attack_archers: If True, the agent will attack other neutral archers.
-
-  mode can either be training or evaluating
-  '''
+ 
   def __init__(self, model = None, normalizer = None):
     
     self.direction_pressed = ''
@@ -38,9 +35,3 @@ class ModelAgent():
     self.button = action[1]
 
     return np.array([self.direction, self.button])
-
-    #some debugging things:
-    #obs_tensor = torch.as_tensor(observations).unsqueeze(0).float().to(self.model.policy.device)
-    #distribution = self.model.policy.get_distribution(obs_tensor)
-    #for i, dist in enumerate(distribution.distribution):
-    #    print(f"dim {i} probs: {dist.probs.detach().cpu().numpy()}")

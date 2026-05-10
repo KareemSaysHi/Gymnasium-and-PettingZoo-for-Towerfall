@@ -7,6 +7,11 @@ from towerfall import Connection
 
 import env_methods as env_methods
 
+'''
+NOTE: EnvHelperAgent is modeled off of the structure of agents
+in Towerfall-AI.
+'''
+
 class EnvHelperAgent():
   '''
   A minimal agent that works with the PettingZoo Env.
