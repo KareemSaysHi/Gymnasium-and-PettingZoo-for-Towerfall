@@ -1,13 +1,13 @@
 from towerfall_env_petting_zoo import TowerFallEnv
-from agents import PPOComparisonAgent
+from agents import BaselineAgent
 
 # evaluate a model against SimpleAgent
 
 num_rounds = 5
 agents = ["archer_0", "archer_1"]
 current_agents = {
-    "archer_0": PPOComparisonAgent(), 
-    "archer_1": PPOComparisonAgent()
+    "archer_0": BaselineAgent(), 
+    "archer_1": BaselineAgent()
 }
 
 #initialize environment

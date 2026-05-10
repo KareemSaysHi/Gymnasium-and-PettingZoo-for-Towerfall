@@ -1,7 +1,7 @@
 import random
 import numpy as np
 
-class PPOComparisonAgent:
+class BaselineAgent:
   def __init__(self):
     self.direction_pressed = ''
     self.button_pressed = ''

@@ -2,12 +2,12 @@
 
 
 import gymnasium as gym
-from agents import PPOComparisonAgent
+from agents import BaselineAgent
 from towerfall_env_petting_zoo import TowerFallEnv
 
 class TowerFallEnvGym(gym.Env):
 
-    def __init__(self, fps = 10000, frames_per_action = 5, opponent_bot = PPOComparisonAgent()):
+    def __init__(self, fps = 10000, frames_per_action = 5, opponent_bot = BaselineAgent()):
         #make secret internal PettingZooEnv
         self.fps = fps
         self.frames_per_action = frames_per_action

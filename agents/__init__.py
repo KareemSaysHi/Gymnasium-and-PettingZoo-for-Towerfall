@@ -4,7 +4,7 @@ from .dummy_agent import DummyAgent
 from .dummy_agent_shooting import DummyAgentShooting
 from .ppo_agent_v0 import PPOAgent_V0
 from .model_agent import ModelAgent
-from .ppo_comparison_agent import PPOComparisonAgent
+from .baseline_agent import BaselineAgent
 from .smarter_baseline_agent import SmarterBaselineAgent
 from .env_helper_agent import EnvHelperAgent
 __all__ = [
@@ -14,7 +14,7 @@ __all__ = [
   'DummyAgentShooting',
   'PPOAgent_V0',
   'ModelAgent',
-  'PPOComparisonAgent',
-  'EnvHelperAgent'
+  'BaselineAgent',
+  'EnvHelperAgent',
   'SmarterBaselineAgent'
 ]
