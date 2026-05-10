@@ -1,12 +1,19 @@
 from towerfall_env_petting_zoo import TowerFallEnv
 from agents import BaselineAgent
+from agents import ModelAgent, SmarterBaselineAgent
+import pickle
+from sb3_contrib.ppo_mask import MaskablePPO
 
-# evaluate a model against SimpleAgent
+# evaluate a model against BaselineAgent
 
-num_rounds = 5
+model = MaskablePPO.load(f"./training_data/towerfall_masked_{600000}")
+with open(f"./training_data/vn_masked_stats_{600000}.pkl", "rb") as f:
+    normalizer = pickle.load(f)
+
+num_rounds = 100
 agents = ["archer_0", "archer_1"]
 current_agents = {
-    "archer_0": BaselineAgent(), 
+    "archer_0": ModelAgent(model = model, normalizer = normalizer),  #if you don't have a model, replace with another BaselineAgent
     "archer_1": BaselineAgent()
 }
 
