@@ -1,0 +1,13 @@
+wins for 20k: 51, losses for 20k: 49
+wins for 40k: 60, losses for 40k: 38
+wins for 60k: 44, losses for 60k: 57
+wins for 80k: 48, losses for 80k: 53
+wins for 100k: 50, losses for 100k: 51
+wins for 120k: 43, losses for 120k: 58
+wins for 140k: 53, losses for 140k: 47
+wins for 160k: 51, losses for 160k: 50
+wins for 180k: 60, losses for 180k: 41
+wins for 200k: 62, losses for 200k: 39
+wins for 220k: 49, losses for 220k: 51
+wins for 240k: 61, losses for 240k: 40
+wins for 260k: 59, losses for 260k: 41

@@ -1,5 +1,5 @@
 from towerfall_env_petting_zoo import TowerFallEnv
-from agents import BaselineAgent, ModelAgent
+from agents import SmarterBaselineAgent, ModelAgent
 from stable_baselines3 import PPO
 import pickle
 
@@ -11,7 +11,7 @@ def evaluate(model, normalizer, num_rounds):
 
     current_agents = {
         "archer_0": ModelAgent(model = model, normalizer = normalizer), 
-        "archer_1": BaselineAgent()
+        "archer_1": SmarterBaselineAgent() #or BaselineAgent
     }
 
     first_player_wins = 0

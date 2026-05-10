@@ -7,10 +7,10 @@ from sb3_contrib.ppo_mask import MaskablePPO
 # evaluate a model against SimpleAgent
 
 
-model = MaskablePPO.load(f"./gym_training_data/versus_fixed_{260000}")
-with open(f"./gym_training_data/vn_versus_fixed_{260000}.pkl", "rb") as f:
+model = MaskablePPO.load(f"./gym_training_data/versus_fixed_smarter{240000}")
+with open(f"./gym_training_data/vn_versus_fixed_smarter{240000}.pkl", "rb") as f:
     normalizer = pickle.load(f)
-num_rounds = 10
+num_rounds = 100
 
 
 #initialize environment
