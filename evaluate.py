@@ -3,7 +3,7 @@ from agents import SmarterBaselineAgent, ModelAgent
 from stable_baselines3 import PPO
 import pickle
 
-# evaluation of one model against another
+# helper evaluation function
 
 def evaluate(model, normalizer, num_rounds):
 

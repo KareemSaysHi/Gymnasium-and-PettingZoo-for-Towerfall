@@ -2,7 +2,7 @@
 
 Completed as a final project for COS435 / ECE433 - Reinforcement Learning at Princeton University.
 
-This project builds upon Vini Ruela's [TowerFall-AI](https://github.com/TowerfallAi/towerfall-ai), which allows a Python script to interact with a TowerFall instance.  Both PettingZoo and Gymnasium environments have been made for TowerFall, and this repository has examples for training with both environments.  Large credit goes to him for the foundational code, this project would not be possible without it.
+This project builds upon Vini Ruela's [TowerFall-AI](https://github.com/TowerfallAi/towerfall-ai), which allows a Python script to interact with a TowerFall instance.  Both PettingZoo and Gymnasium environments have been made for TowerFall, and this repository has examples for training with both environments.  Large credit goes to him for the foundational code, this project would not be possible without it.  Outside of the towerfall folder and the general structure of dummy_agent and env_helper_agent, the code is my own, but I give credit for inspiration as well in comments.
 
 ### Running the environments
 **To run this code, you must already own a copy of TowerFall.**  Go buy it, it's an awesome game :)

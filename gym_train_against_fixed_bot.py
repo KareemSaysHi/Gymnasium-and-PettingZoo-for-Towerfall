@@ -3,6 +3,8 @@ from sb3_contrib.ppo_mask import MaskablePPO
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 from agents import SmarterBaselineAgent
 import os
+
+'''Train a model against a fixed pre-scripted bot '''
 os.makedirs("./gym_training_data", exist_ok=True)
 
 env = DummyVecEnv([lambda: TowerFallEnvGym(opponent_bot=SmarterBaselineAgent())])

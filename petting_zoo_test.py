@@ -4,7 +4,7 @@ from agents import ModelAgent, SmarterBaselineAgent
 import pickle
 from sb3_contrib.ppo_mask import MaskablePPO
 
-# evaluate a model against BaselineAgent
+# Evaluate a model against BaselineAgent
 
 model = MaskablePPO.load(f"./training_data/towerfall_masked_{600000}")
 with open(f"./training_data/vn_masked_stats_{600000}.pkl", "rb") as f:

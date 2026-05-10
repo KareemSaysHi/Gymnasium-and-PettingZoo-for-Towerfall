@@ -4,6 +4,8 @@ import pickle
 import re
 import matplotlib.pyplot as plt
 
+'''Evaluates a saved model against a fixed pre-scripted bot at various time steps
+and produces a graph of the results '''
 for i in range (0, 100):
     model = MaskablePPO.load(f"./training_data/towerfall_masked_{i*20000}")
     with open(f"./training_data/vn_masked_stats_{i*20000}.pkl", "rb") as f:

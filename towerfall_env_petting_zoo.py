@@ -6,7 +6,8 @@ import numpy as np
 import random
 import env_methods as env_methods 
 
-''' TowerFallEnv is a PettingZoo Environment for interacting with TowerFall '''
+''' TowerFallEnv is a PettingZoo Environment for interacting with TowerFall.  '''
+
 class TowerFallEnv(ParallelEnv):
     metadata = {
         "name": "TowerFallEnv",

@@ -1,7 +1,7 @@
 from towerfall_env_gym import TowerFallEnvGym
 from agents import BaselineAgent
 
-# evaluate a model against SimpleAgent
+# have two Baseline Agents play 5 rounds together through the Gym environment
 
 num_rounds = 5
 

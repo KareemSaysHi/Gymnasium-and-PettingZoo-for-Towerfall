@@ -1,8 +1,3 @@
-'''
-Petting Zoo Vectorized PPO:
-
-We vectorize the towerfall petting zoo environment, so ONE MODEL is controlling both agents.  The observations of both players are used to train the model (so it learns from both sides).
-'''
 from sb3_contrib.ppo_mask import MaskablePPO
 import numpy as np
 from stable_baselines3.common.vec_env import VecNormalize
@@ -11,6 +6,16 @@ from towerfall_env_petting_zoo import TowerFallEnv
 from supersuit.vector.concat_vec_env import ConcatVecEnv
 import pickle
 from evaluate import evaluate
+
+'''
+Training two agents via the PettingZoo environment by having both agents
+learn at the same time, playing against each other, being trained by the 
+same model.  Should be severely unstable but is interesting to experiment
+with.
+
+We vectorize the towerfall petting zoo environment, so ONE MODEL is controlling both agents.  The observations of both players are used to train the model (so it learns from both sides).
+'''
+
 
 #some janky Claude workaround for making sure all the correct functions are in ConcatVecEnv
 def _has_attr(self, attr_name):

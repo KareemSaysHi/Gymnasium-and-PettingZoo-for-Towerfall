@@ -1,9 +1,8 @@
-''' TowerFallEnvGym is built on top of the corresponding Petting Zoo environment.  Go check that file out first for more information.'''
-
-
 import gymnasium as gym
 from agents import BaselineAgent
 from towerfall_env_petting_zoo import TowerFallEnv
+
+''' TowerFallEnvGym is built on top of the corresponding Petting Zoo environment.  Go check that file out first for more information.'''
 
 class TowerFallEnvGym(gym.Env):
 
