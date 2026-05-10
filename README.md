@@ -13,7 +13,7 @@ See the files in the repository for details on the environments and training!
 
 ### Creating your own agents
 
-Agents should be created for the TowerFall environment that take in an observation (described as the observation space of both environmentss) and output an action.  Actions are a MultiDiscrete(9, 4), consisting of at most one element in each of the following categories:
+Agents should be created for the TowerFall environment that take in an observation (described as the observation space of both environments) and output an action.  Actions are a MultiDiscrete(9, 4), consisting of at most one element in each of the following categories:
 - Direction (the 8 directional inputs)
 - Button (jump, shoot, dash)
 See BaselineAgent for an example implementation
